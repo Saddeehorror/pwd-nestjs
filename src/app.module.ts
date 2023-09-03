@@ -28,7 +28,8 @@ import { TrainerModule } from './trainer/trainer.module';
     // Configuración de la conexión a MongoDB
     // MongooseModule.forRoot(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`),
     // MongooseModule.forRoot(`mongodb+srv://Sys_admin:Luis1213@cluster0.dxq2jfo.mongodb.net/?retryWrites=true&w=majority`),
-    MongooseModule.forRoot(`mongodb+srv://frikitazastampico:vPHqsVg2ThV8R8WN@cluster0.mmvxmrb.mongodb.net/?retryWrites=true&w=majority`),
+    // MongooseModule.forRoot(`mongodb+srv://frikitazastampico:vPHqsVg2ThV8R8WN@cluster0.mmvxmrb.mongodb.net/?retryWrites=true&w=majority`),
+    MongooseModule.forRoot(`mongodb+srv://pokeworld-main-db-0c9da6350b8:pNG6Rb9bkWbUG5K76rh8H76Rqmr8wS@prod-us-central1-2.ih9la.mongodb.net/pokeworld-main-db-0c9da6350b8`),
 
     MulterModule.register({
       dest: './uploads', // Directorio donde se guardarán las imágenes subidas
