@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { TrainerPokemon } from './entities/trainer-pokemon.entity';
 import { PokemonService } from 'src/pokemon/pokemon.service';
+import { CreateTrainerPokemonDto } from './dto/create-trainer-pokemon.dto';
 
 
 @Injectable()
@@ -13,10 +14,10 @@ export class TrainerPokemonService {
     private pokemonService:PokemonService
     ){}
 
-  async create(id: number):Promise<TrainerPokemon> {
+  async create(request:CreateTrainerPokemonDto):Promise<TrainerPokemon> {
 
-    let pokemon = await this.pokemonService.generate(id);
-
+    let pokemon = await this.pokemonService.generate(request.pokemonid);
+    pokemon.trainerId = request.id;
     console.log(pokemon);
 
     let newPokemon = new this.TrainerPokemonModel(pokemon);

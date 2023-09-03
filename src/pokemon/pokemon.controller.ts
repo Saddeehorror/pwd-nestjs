@@ -9,9 +9,14 @@ export class PokemonController {
 
 
 
-  @Get(':id')
+  @Get('generate/:id')
   generate(@Param('id') id: string) {
     return this.pokemonService.generate(+id);
+  }
+
+  @Get('kanto-starters')
+  firstgenstarters() {
+    return this.pokemonService.firstgenstarters();
   }
 
 

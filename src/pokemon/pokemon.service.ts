@@ -14,6 +14,7 @@ export class PokemonService {
     let pokemonInfo = await this.getPokemonInfo(id)
     let pokemon:PokemonModel = {
       // pokeInfo: pokemonInfo,
+      trainerId:'',
       name:pokemonInfo.name,
       pokemonId:(pokemonInfo.id < 10)?'0'+pokemonInfo.id:pokemonInfo.id,
       types:this.setTypes(pokemonInfo),
@@ -207,5 +208,20 @@ export class PokemonService {
     return Math.random() < 0.05; // Probabilidad del 5% de ser shiny
   }
 
+
+  async firstgenstarters(){
+    const firstGenid = [1,4,7];
+    let firgenPokemon = [];
+
+    for (let index = 0; index < firstGenid.length; index++) {
+      let poke = await this.generate(firstGenid[index])
+      console.log(poke);
+      firgenPokemon.push(poke);
+    }
+
+    return firgenPokemon;
+
+
+  }
 
 }

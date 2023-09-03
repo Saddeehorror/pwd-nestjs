@@ -1,5 +1,6 @@
 export class PokemonModel{
     pokeInfo?:any;
+    trainerId?:string;
     pokemonId:string;
     name:string;
     nature:NautreModel;

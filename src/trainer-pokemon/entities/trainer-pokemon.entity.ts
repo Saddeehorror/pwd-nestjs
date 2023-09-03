@@ -3,6 +3,8 @@ import { Document, Types } from 'mongoose';
 @Schema()
 export class TrainerPokemon extends Document{
     @Prop({ required: true })
+    trainerId: string;
+    @Prop({ required: true })
     pokemonId: string;
     @Prop({ required: true })
     name: string;

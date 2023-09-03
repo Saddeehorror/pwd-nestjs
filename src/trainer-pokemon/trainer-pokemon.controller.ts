@@ -10,9 +10,9 @@ export class TrainerPokemonController {
 
 
 
-  @Post(':id')
-  async create(@Param('id') id: string) {
-    return await this.trainerPokemonService.create(+id);
+  @Post()
+  async create(@Body() request: CreateTrainerPokemonDto) {
+    return await this.trainerPokemonService.create(request);
   }
 
   @Get()

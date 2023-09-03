@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User} from './entities/user.entity';
 import * as bcrypt from 'bcrypt';
+import { UpdateUserNameDto } from './dto/updateUsername.dto';
 
 @Injectable()
 export class UsersService {
@@ -28,6 +29,39 @@ export class UsersService {
     // return true;
     const newUser = new this.userModel(object);
     return newUser.save();
+  }
+
+  async updateUserUsername(request:UpdateUserNameDto){
+    let user = await this.findByGoogleId(request.id)
+
+    if (!user) {
+      throw new Error('usuario no encontrado');
+    }
+
+    let userUpdate = await this.userModel.findByIdAndUpdate(user._id,
+      {username:request.username},
+      {new:true}
+      )
+
+    return userUpdate;
+
+  }
+
+  async updateUserIntro(request:UpdateUserNameDto){
+    console.log('updateUserIntro');
+    let user = await this.findByGoogleId(request.id)
+
+    if (!user) {
+      throw new Error('usuario no encontrado');
+    }
+
+    let userUpdate = await this.userModel.findByIdAndUpdate(user._id,
+      {skipintro:true},
+      {new:true}
+      )
+
+    return userUpdate;
+
   }
 
 }
